@@ -76,6 +76,11 @@
 						//if node label clicks,
 						scope[treeId].selectNodeLabel = scope[treeId].selectNodeLabel || function( selectedNode ){
 
+							if (scope[treeId].currentNode && (scope[treeId].currentNode === selectedNode)) {
+							  // force a digest	
+							  selectedNode.__timestamp = new Date();
+							  return;
+							}
 							//remove highlight from previous node
 							if( scope[treeId].currentNode && scope[treeId].currentNode.selected ) {
 								scope[treeId].currentNode.selected = undefined;
